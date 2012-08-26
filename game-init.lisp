@@ -32,4 +32,5 @@
 	     (mapcar #'draw *creatures*)
 	     (tick)
 	     (on-tick 10 (mapcar #'move *creatures*))
-	     (update-display)))))
+	     (on-tick 1 (gain-health)
+	     (update-display))))))
