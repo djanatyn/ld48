@@ -1,16 +1,17 @@
 (eval-when (:compile-toplevel)
   (defpackage :ld48 (:use :common-lisp :lispbuilder-sdl))
   (in-package :ld48)
-  (mapcar #'load '("settings.lisp" "utilities.lisp" "player.lisp" "creature.lisp" "testing.lisp")))
+  (mapcar #'load '("settings.lisp" "utilities.lisp" "creature.lisp" "player.lisp" "testing.lisp")))
 
-(defparameter *creatures* (spawn-creatures *num-creatures*))
+(reset-player)
 
 (defun key-handler (key)
   (flet ((key-is (key-to-test) (key= key-to-test key)))
-    (cond ((key-is :sdl-key-up)     (move-player 0 1))
-	  ((key-is :sdl-key-down)   (move-player 0 -1))
-	  ((key-is :sdl-key-right)  (move-player 1 0))
-	  ((key-is :sdl-key-left)   (move-player -1 0))
+    (cond ((key-is :sdl-key-up)     (move-player 0 -5))
+	  ((key-is :sdl-key-down)   (move-player 0 5))
+	  ((key-is :sdl-key-right)  (move-player 5 0))
+	  ((key-is :sdl-key-left)   (move-player -5 0))
+	  ((key-is :sdl-key-space)  (drop-creature))
 	  ((key-is :sdl-key-escape) (push-quit-event)))))
 
 (defun run-game ()

@@ -11,3 +11,7 @@
   (incf *clock*))
 (defmacro on-tick (interval &body body)
   `(if (= (mod *clock* ,interval) 0) (progn ,@body)))
+
+(defun empty? (x y)
+  (if (and (> x 0) (< x *WIDTH*) (> y 0) (< y *HEIGHT*)) t))
+

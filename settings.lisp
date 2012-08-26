@@ -1,9 +1,13 @@
 ;; settings for ld48 game
+;; ----------------------
 
-(defconstant *WIDTH* 640)
-(defconstant *HEIGHT* 480)
+;; resolution?
+(defparameter *WIDTH* 1366)
+(defparameter *HEIGHT* 768)
 
-(defvar *fullscreen?* t)
+;; run game in fullscreen mode?
+(defparameter *fullscreen?* nil)
 
-(defvar *num-creatures* 40)
+;; number of creatures to spawn?
+(defparameter *num-creatures* 40)
 
