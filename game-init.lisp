@@ -1,3 +1,6 @@
+;; the actual game
+;; ---------------
+
 (eval-when (:compile-toplevel)
   (defpackage :ld48 (:use :common-lisp :lispbuilder-sdl))
   (in-package :ld48)
@@ -6,6 +9,7 @@
 (reset-player)
 
 (defun key-handler (key)
+  "handle input"
   (flet ((key-is (key-to-test) (key= key-to-test key)))
     (cond ((key-is :sdl-key-up)     (move-player 0 -5))
 	  ((key-is :sdl-key-down)   (move-player 0 5))

@@ -1,5 +1,5 @@
-;; creature definitions
-;; --------------------
+;; creature
+;; --------
 
 (defclass creature ()
   ((x :accessor creature-x
@@ -16,6 +16,7 @@
 	  :initarg :color)))
 
 (defmethod move ((mover creature))
+  "move the creature, randomly"
   (let ((choice (random 5))
 	(x (creature-x mover))
 	(y (creature-y mover)))
@@ -27,12 +28,15 @@
       (4 nil))))
 
 (defmethod draw ((drawn creature))
+  "draw the creature to the screen"
   (sdl-gfx:draw-box (sdl:rectangle :x (creature-x drawn) :y (creature-y drawn) :w (creature-health drawn) :h (creature-health drawn)) :color (creature-color drawn)))
 
 (defun random-creature ()
+  "generate a random creature within the bounds of the game"
   (make-instance 'creature :health (random 10) :x (random *WIDTH*) :y (random *HEIGHT*)))
 
 (defun spawn-creatures (num-creatures)
+  "generate a list of random creatures"
   (if (> num-creatures 0) (cons (random-creature) (spawn-creatures (- num-creatures 1)))))
 
 (defparameter *creatures* (spawn-creatures *num-creatures*))
