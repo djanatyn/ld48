@@ -30,5 +30,5 @@
 (defun random-creature ()
   (make-instance 'creature :health (random 10) :x (random *HEIGHT*) :y (random *WIDTH*)))
 
-(defun make-creatures (num-creatures)
-  (if (> num-creatures 0) (cons (random-creature) (make-creatures (- num-creatures 1)))))
+(defun spawn-creatures (num-creatures)
+  (if (> num-creatures 0) (cons (random-creature) (spawn-creatures (- num-creatures 1)))))
